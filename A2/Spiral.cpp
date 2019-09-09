@@ -13,6 +13,7 @@ Description: A class for generating coordinates for a spiral
 
 #include <cmath>
 #include <math.h>
+#include <iostream>
 #include "Spiral.h"
 
 Spiral::Spiral(double centerX, double centerY, double startRadius, double startAngDeg)
@@ -33,12 +34,12 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
 Spiral& Spiral::operator++()
 {
   //archimedean spiral
-  theta += dTheta;
+  theta -= dTheta;
   // dTheta -= dTheta/B; //TODO: decrease dist between chars
-  textX_ = centerX_ + (startRadius_+(B*theta)) * cos(theta);
-  textY_ = centerY_ + (startRadius_+(B*theta)) * sin(theta);
+  textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta);
+  textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
   // textX_
-  textAngDeg_ += ((M_PI/180)*theta);
+  textAngDeg_ = (theta - 90) / 180 * 3.141592;
   return *this;
 }
 
@@ -63,5 +64,6 @@ double Spiral::getTextY()
 //returns degrees
 double Spiral::getTextAngle()
 {
+  std::cout << textAngDeg_ << std::endl;
   return textAngDeg_;
 }
