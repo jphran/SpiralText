@@ -33,3 +33,4 @@ clean:
 
 test:
 	./spiralPDF "sample text J the quick brown fox jumped"
+	okular spiralPDF.pdf

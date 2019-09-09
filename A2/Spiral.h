@@ -18,7 +18,8 @@ class Spiral
 {
 private:
   const int B = 5;
-  const double theta = .125;
+  const double dTheta = .125;
+  double theta;
   double centerX_;
   double centerY_;
   double startRadius_;

@@ -19,8 +19,9 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
  : centerX_(centerX), centerY_(centerY), startRadius_(startRadius), startAngDeg_(startAngDeg)
 {
   //TODO: put in radius limits and coords
-  textX_ = cos(startAngDeg_*(M_PI/180))*startRadius_;
-  textY_ = sin(startAngDeg_*(M_PI/180))*startRadius_;
+  theta = 0;
+  textX_ = centerX_ + cos(startAngDeg_*(M_PI/180))*startRadius_;
+  textY_ = centerY_ + sin(startAngDeg_*(M_PI/180))*startRadius_;
 }
 
 
@@ -30,8 +31,11 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
 */
 Spiral& Spiral::operator++()
 {
-  textX_ = (startRadius_+(B*theta)) * cos(theta);
-  textY_ = (startRadius_+(B*theta)) * sin(theta);
+  //archimedean spiral
+  theta += dTheta;
+  textX_ = centerX_ + (startRadius_+(B*theta)) * cos(theta);
+  textY_ = centerY_ + (startRadius_+(B*theta)) * sin(theta);
+  // textX_ 
   textAngDeg_ += (M_PI/180)*theta;
   return *this;
 }
