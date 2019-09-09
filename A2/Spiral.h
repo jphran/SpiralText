@@ -12,10 +12,13 @@ Modified:
 #define SPIRAL_H
 
 #include <cmath>
+#include <math.h>
 
 class Spiral
 {
 private:
+  const int B = 5;
+  const double theta = .125;
   double centerX_;
   double centerY_;
   double startRadius_;
@@ -23,10 +26,12 @@ private:
   double textX_;
   double textY_;
   double textAngDeg_;
+  void createArchimedeanSpiral(void);
 
 public:
   Spiral(double centerX, double centerY, double startRadius, double startAngDeg);
-  void operator++();
+  Spiral& operator++();
+  Spiral operator++(int);
   double getTextX();
   double getTextY();
   double getTextAngle();

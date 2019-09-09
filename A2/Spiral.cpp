@@ -12,18 +12,35 @@ Description: A class for generating coordinates for a spiral
 
 
 #include <cmath>
+#include <math.h>
 #include "Spiral.h"
 
 Spiral::Spiral(double centerX, double centerY, double startRadius, double startAngDeg)
- : centerX_(centerX), centerY_(centerY), startRadius_(startRadius), startAngDeg_(startAngDeg) {}
+ : centerX_(centerX), centerY_(centerY), startRadius_(startRadius), startAngDeg_(startAngDeg)
+{
+  //TODO: put in radius limits and coords
+  textX_ = cos(startAngDeg_*(M_PI/180))*startRadius_;
+  textY_ = sin(startAngDeg_*(M_PI/180))*startRadius_;
+}
+
 
 /*
   internally advances the spiral to its next position.
   works for spirals that fit on one 8.5 x 11in page.
 */
-void Spiral::operator++()
+Spiral& Spiral::operator++()
 {
-  //TODO:
+  textX_ = (startRadius_+(B*theta)) * cos(theta);
+  textY_ = (startRadius_+(B*theta)) * sin(theta);
+  textAngDeg_ += (M_PI/180)*theta;
+  return *this;
+}
+
+Spiral Spiral::operator++(int)
+{
+  Spiral result(*this);
+  ++(*this);
+  return result;
 }
 
 double Spiral::getTextX()
