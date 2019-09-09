@@ -48,11 +48,10 @@ int main (int argc, char ** argv)
     double rad1;
     double rad2;
     unsigned int i;
-    const char* sample = "sample text the quick brown fox jumped";
 
 
     // Place characters one at a time on the page.
-    for (i = 0; i < strlen (sample); i++) {
+    for (i = 0; i < strlen (argv[1]); i++) {
         float x;
         float y;
         // rad1 determines the angle of the letter on the page. rad2 is how far
@@ -69,7 +68,7 @@ int main (int argc, char ** argv)
         x = 210 + cos(rad2) * 150;
         y = 300 + sin(rad2) * 150;
 
-        hp.writeToPDF(x,y,rad1, sample[i]);
+        hp.writeToPDF(x,y,rad1, argv[1][i]);
         angle2 -= 10.0; // change the angle around the circle
     }
 

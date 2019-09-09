@@ -32,4 +32,4 @@ clean:
 	rm spiralPDF *.o *.pdf
 
 test:
-	./spiralPDF "example text"
+	./spiralPDF "sample text J the quick brown fox jumped"
