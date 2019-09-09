@@ -44,40 +44,18 @@ int main (int argc, char ** argv)
 {
     const int XCEN = 210;
     const int YCEN = 300;
-    const int STARTRAD = 70;
-    const int STARTANGDEG = 270;
+    const int STARTRAD = 100;
+    const int STARTANGDEG = 0;
 
     HaruPDF hp(argc, argv);
     Spiral sp(XCEN, YCEN, STARTRAD, STARTANGDEG);
 
-    /* text along a circle */
-    // double angle2 = 180;
-    // double rad1;
-    // double rad2;
     unsigned int i;
-
 
     // Place characters one at a time on the page.
     for (i = 0; i < strlen (argv[1]); i++) {
-        // float x;
-        // float y;
-        // // rad1 determines the angle of the letter on the page. rad2 is how far
-        // // around the circle you are. Notice that they are perpendicular and
-        // // thus not independent.
-        // //
-        // // Pay careful attention to what wants radians and what is degrees
-        // // between haru and spiral and math functions.
-        // rad1 = (angle2 - 90) / 180 * 3.141592;
-        // rad2 = angle2 / 180 * 3.141592;
-        //
-        // // The position of the character depends on the center point
-        // // plus the angle and the radius.
-        // x = 210 + cos(rad2) * 150;
-        // y = 300 + sin(rad2) * 150;
-
-        hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle())*(M_PI/180), argv[1][i]);
-        sp++;
-        // angle2 -= 10.0; // change the angle around the circle
+      hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle())*(M_PI/180), argv[1][i]);
+      sp++;
     }
 
     hp.savePDF();
