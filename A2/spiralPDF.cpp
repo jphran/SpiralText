@@ -44,7 +44,7 @@ int main (int argc, char ** argv)
 {
     const int XCEN = 210;
     const int YCEN = 300;
-    const int STARTRAD = 100;
+    const int STARTRAD = 70;
     const int STARTANGDEG = 0;
 
     HaruPDF hp(argc, argv);
@@ -75,7 +75,7 @@ int main (int argc, char ** argv)
         // x = 210 + cos(rad2) * 150;
         // y = 300 + sin(rad2) * 150;
 
-        hp.writeToPDF(sp.getTextX(),sp.getTextY(),sp.getTextAngle()*(M_PI/180), argv[1][i]);
+        hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle()-90)*(M_PI/180), argv[1][i]);
         sp++;
         // angle2 -= 10.0; // change the angle around the circle
     }
