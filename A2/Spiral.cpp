@@ -20,10 +20,11 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
  : centerX_(centerX), centerY_(centerY), startRadius_(startRadius), startAngDeg_(startAngDeg)
 {
   //TODO: put in radius limits and coords
-  theta = 0;
+  theta = ((-startAngDeg_+90)*(M_PI/180));
   dTheta = startRadius_/400;
-  textX_ = centerX_ + cos(startAngDeg_*(M_PI/180))*startRadius_;
-  textY_ = centerY_ + sin(startAngDeg_*(M_PI/180))*startRadius_;
+  textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta);
+  textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
+  textAngDeg_ = (theta - M_PI/2) * 180/M_PI;
 }
 
 
@@ -33,13 +34,15 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
 */
 Spiral& Spiral::operator++()
 {
-  //archimedean spiral
   theta -= dTheta;
   // dTheta -= dTheta/B; //TODO: decrease dist between chars
+
+  //archimedean spiral
   textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta);
   textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
-  // textX_
-  textAngDeg_ = (theta - 90) / 180 * 3.141592;
+
+  textAngDeg_ = (theta - M_PI/2) * 180/M_PI;
+
   return *this;
 }
 
@@ -64,6 +67,5 @@ double Spiral::getTextY()
 //returns degrees
 double Spiral::getTextAngle()
 {
-  std::cout << textAngDeg_ << std::endl;
   return textAngDeg_;
 }

@@ -45,7 +45,7 @@ int main (int argc, char ** argv)
     const int XCEN = 210;
     const int YCEN = 300;
     const int STARTRAD = 70;
-    const int STARTANGDEG = 0;
+    const int STARTANGDEG = 270;
 
     HaruPDF hp(argc, argv);
     Spiral sp(XCEN, YCEN, STARTRAD, STARTANGDEG);
