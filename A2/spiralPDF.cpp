@@ -42,7 +42,37 @@ a close copy of pdfExample.cpp
 int main (int argc, char ** argv)
 {
     HaruPDF hp(argc, argv);
-    hp.writeToPDF(1,1,1, 'a');
+
+    /* text along a circle */
+    double angle2 = 180;
+    double rad1;
+    double rad2;
+    unsigned int i;
+    const char* sample = "sample text the quick brown fox jumped";
+
+
+    // Place characters one at a time on the page.
+    for (i = 0; i < strlen (sample); i++) {
+        float x;
+        float y;
+        // rad1 determines the angle of the letter on the page. rad2 is how far
+        // around the circle you are. Notice that they are perpendicular and
+        // thus not independent.
+        //
+        // Pay careful attention to what wants radians and what is degrees
+        // between haru and spiral and math functions.
+        rad1 = (angle2 - 90) / 180 * 3.141592;
+        rad2 = angle2 / 180 * 3.141592;
+
+        // The position of the character depends on the center point
+        // plus the angle and the radius.
+        x = 210 + cos(rad2) * 150;
+        y = 300 + sin(rad2) * 150;
+
+        hp.writeToPDF(x,y,rad1, sample[i]);
+        angle2 -= 10.0; // change the angle around the circle
+    }
+
     hp.savePDF();
 
     return 0;
