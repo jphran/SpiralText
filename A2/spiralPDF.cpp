@@ -13,16 +13,10 @@ spiral test pdf art
 
 
 //**********************************PREPROCESSOR********************************
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-#include <math.h>
-#include "hpdf.h"
-
+#include <iostream>
 #include "HaruPDF.h"
 #include "Spiral.h"
-
-
 
 //********************************** MAIN********************************
 // argc is the number of arguments. Argv is an array of character arrays, or C-style strings.
@@ -30,6 +24,12 @@ spiral test pdf art
 // argv[0] would be "pdfExample\0" - the name of the executing program.
 int main (int argc, char ** argv)
 {
+  //check for command line arguments
+  if(argc != 2)
+  {
+    std::cout << "ERROR: No sample text provided in command line. Please retry.\n";
+    return 1;
+  }
   //parameters for the example spiral
     const int XCEN = 210;
     const int YCEN = 300;
@@ -43,7 +43,7 @@ int main (int argc, char ** argv)
 
     // Place characters one at a time on the page.
     for (i = 0; i < strlen (argv[1]); i++) {
-      hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle()), argv[1][i]); 
+      hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle()), argv[1][i]);
       sp++;
     }
 

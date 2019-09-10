@@ -16,9 +16,9 @@ LIBHARU = ../libharu
 spiralPDF: spiralPDF.cpp Spiral.cpp Spiral.h HaruPDF.h HaruPDF.cpp
 	$(CC) $(CFLAGS) -o spiralPDF Spiral.cpp HaruPDF.cpp spiralPDF.cpp -I$(LIBHARU)/include -L$(LIBHARU)/src -lhpdfs
 
-#TODO:
+
 # spiralPDF: Spiral.o HaruPDF.o spiralPDF.cpp
-# 	$(CC) $(CFLAGS) -o spiralPDF Spiral.o HaruPDF.o spiralPDF.cpp
+# 	$(CC) $(CFLAGS) -o spiralPDF Spiral.o HaruPDF.o -I$(LIBHARU)/include -L$(LIBHARU)/src spiralPDF.cpp
 #
 # Spiral.o: Spiral.h Spiral.cpp
 # 	$(CC) $(CFLAGS) -c Spiral.cpp
