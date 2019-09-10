@@ -2,7 +2,7 @@
 # Class: CS3505
 # Assign: A2 SpiralText
 # Created: 9/6/19
-# Version: 0.1
+# Version: 1.0
 # Modified:
 #
 #

@@ -3,30 +3,16 @@ Auth: Justin Francis
 Class: CS3505
 Assign: A2 SpiralText
 Created: 9/6/19
-Version: 0.1
+Version: 1.0
 Modified:
 
 
-Description: A test program for spiral.cpp
-a close copy of pdfExample.cpp
+Description: the main in A2. This takes in the command line args and returns
+spiral test pdf art
 */
 
 
-/*
- * << Alternative PDF Library 1.0.0 >> -- text_demo2.c
- *
- * Copyright (c) 1999-2006 Takeshi Kanno <takeshi_kanno@est.hi-ho.ne.jp>
- *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.
- * It is provided "as is" without express or implied warranty.
- *
- * Modified by David Johnson and Justin Francis, University of Utah, 2016.
- */
-
+//**********************************PREPROCESSOR********************************
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -37,11 +23,14 @@ a close copy of pdfExample.cpp
 #include "Spiral.h"
 
 
+
+//********************************** MAIN********************************
 // argc is the number of arguments. Argv is an array of character arrays, or C-style strings.
 // If you call the program like ./pdfExample "Hello", then argv[1] would contain "Hello\0".
 // argv[0] would be "pdfExample\0" - the name of the executing program.
 int main (int argc, char ** argv)
 {
+  //parameters for the example spiral
     const int XCEN = 210;
     const int YCEN = 300;
     const int STARTRAD = 100;
@@ -54,7 +43,7 @@ int main (int argc, char ** argv)
 
     // Place characters one at a time on the page.
     for (i = 0; i < strlen (argv[1]); i++) {
-      hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle())*(M_PI/180), argv[1][i]);
+      hp.writeToPDF(sp.getTextX(),sp.getTextY(),(sp.getTextAngle()), argv[1][i]); 
       sp++;
     }
 

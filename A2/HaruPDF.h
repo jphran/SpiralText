@@ -3,7 +3,7 @@ Auth: Justin Francis
 Class: CS3505
 Assign: A2 SpiralText
 Created: 9/6/19
-Version: 0.1
+Version: 1.0
 Modified:
 
 */
@@ -27,7 +27,8 @@ private:
 
 public:
   HaruPDF(int argc, char **argv);
-  void writeToPDF(double xPos, double yPos, double angleRad, char toWrite);
+  void writeToPDF(double xPos, double yPos, double angleDeg, char toWrite);
   void savePDF(void);
 };
+
 #endif
