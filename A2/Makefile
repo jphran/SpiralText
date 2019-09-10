@@ -12,8 +12,11 @@ CC = g++
 CFLAGS = -Wall -std=c++11
 LIBHARU = ../libharu
 
-spiralPDF: Spiral.o HaruPDF.o spiralPDF.cpp
-	$(CC) $(CFLAGS) -o spiralPDF Spiral.o HaruPDF.o -I$(LIBHARU)/include -L$(LIBHARU)/src -lhpdfs spiralPDF.cpp
+spiralPDF: Spiral.o HaruPDF.o spiralPDF.o
+	$(CC) $(CFLAGS) -o spiralPDF spiralPDF.o Spiral.o HaruPDF.o -I$(LIBHARU)/include -L$(LIBHARU)/src -lhpdfs
+
+spiralPDF.o: spiralPDF.cpp
+	$(CC) $(CFLAGS) -c spiralPDF.cpp -I$(LIBHARU)/include -L$(LIBHARU)/src -lhpdfs
 
 Spiral.o: Spiral.h Spiral.cpp
 	$(CC) $(CFLAGS) -c Spiral.cpp
