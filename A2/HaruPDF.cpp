@@ -59,7 +59,7 @@ void HaruPDF::writeToPDF(double xPos, double yPos, double angleDeg, char toWrite
   //create buffer to pass to lib haru
   char buf[2];
 
-  double angleRad = angleDeg *(M_PI/180); //convert for calcs
+  double angleRad = (-angleDeg) *(M_PI/180); //convert for calcs
 
   // This ugly function defines where any following text will be placed
   // on the page. The cos/sin stuff is actually defining a 2D rotation

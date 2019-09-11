@@ -52,8 +52,8 @@ Spiral& Spiral::operator++()
   dTheta -= dTheta/(pow(B,3)); //reduce spacing as the spiral advances
 
   //archimedean spiral parameterized
-  textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta);
-  textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
+  textX_ = centerX_ + (startRadius_+(B*theta)) * cos(theta);
+  textY_ = centerY_ + (startRadius_+(B*theta)) * sin(theta);
 
   textAngDeg_ = (theta - M_PI/2) * 180/M_PI;
 
