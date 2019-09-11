@@ -31,7 +31,7 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
   }
   else{startRadius_ = 100;}
 
-  theta = startAngDeg * (M_PI/180); //((-startAngDeg_+90)*(M_PI/180)); //sets starting angle
+  theta = (startAngDeg+90) * (M_PI/180); //((-startAngDeg_+90)*(M_PI/180)); //sets starting angle
   dTheta = startRadius_/(B*startRadius_); //sets angle incrementation
   textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta); //starting point
   textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
