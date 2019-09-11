@@ -31,11 +31,11 @@ Spiral::Spiral(double centerX, double centerY, double startRadius, double startA
   }
   else{startRadius_ = 100;}
 
-  theta = (startAngDeg+90) * (M_PI/180); //((-startAngDeg_+90)*(M_PI/180)); //sets starting angle
+  theta = ((-startAngDeg_+90)*(M_PI/180)); //sets starting angle
   dTheta = startRadius_/(B*startRadius_); //sets angle incrementation
   textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta); //starting point
   textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
-  textAngDeg_ = (theta - M_PI/2) * 180/M_PI; //sets first char angle
+  textAngDeg_ = -(theta - M_PI/2) * 180/M_PI; //sets first char angle
 }
 
 
@@ -52,8 +52,8 @@ Spiral& Spiral::operator++()
   dTheta -= dTheta/(pow(B,3)); //reduce spacing as the spiral advances
 
   //archimedean spiral parameterized
-  textX_ = centerX_ + (startRadius_+(B*theta)) * cos(theta);
-  textY_ = centerY_ + (startRadius_+(B*theta)) * sin(theta);
+  textX_ = centerX_ + (startRadius_-(B*theta)) * cos(theta);
+  textY_ = centerY_ + (startRadius_-(B*theta)) * sin(theta);
 
   textAngDeg_ = (theta - M_PI/2) * 180/M_PI;
 
